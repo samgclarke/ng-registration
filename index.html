@@ -8,11 +8,14 @@
     <title>Ng-Registration</title>
 
   </head>
-  <body>
+  <body layout-padding>
     <h1>Ng Registration</h1>
     
-    <div registration-form></div>
-    
+    <md-content layout="row" layout-sm="column">
+      <div registration-form flex></div>
+      <div flex></div>
+    </md-content>
+
     <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="application/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script type="application/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>

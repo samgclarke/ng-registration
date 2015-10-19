@@ -11,7 +11,18 @@ angular.module('myApp', [
 
   $stateProvider
     .state("username-exists", {
-      url: "/username-exists/:scriptId",
+      url: "/username-exists/:username",
+      resolve: {
+        data: function() {
+          var data = {
+            result: false,
+          }
+          if (username = 'sam') {
+            data.result = true;
+          }
+          return data;
+        }
+      }
     })
     .state('index', {
       url: '/',

@@ -4,7 +4,7 @@
   <!-- username -->
   <md-input-container>
     <label>Username</label>
-    <input type="text" name="username" ng-model="reg.user.username" required username-validator>
+    <input type="text" name="username" ng-model="reg.user.username" ng-minlength="3" ng-maxlength="12" required username-validator>
   </md-input-container>
 
   <!-- password -->
@@ -31,6 +31,16 @@
   <!-- error messages -->
   <div ng-if="registerForm.$dirty">
 
+    <div ng-if="registerForm.username.$dirty">
+      <span ng-show="registerForm.username.$pending" class="md-whiteframe-z1 message-card info" layout layout-align="center center">Checking Username...</span>
+      
+      <span ng-show="registerForm.username.$error.username-validator" class="md-whiteframe-z1 message-card warning" layout layout-align="center center">Username already taken</span>
+
+      <span ng-show="registerForm.username.$error.minlength" class="md-whiteframe-z1 message-card warning" layout layout-align="center center"><span>Username too short! Your username should be between 3 and 12 characters long.</span></span>
+
+      <span ng-show="registerForm.username.$error.maxlength" class="md-whiteframe-z1 message-card warning" layout layout-align="center center"><span>Username too long! Your username should be between 3 and 12 characters long.</span></span>
+    </div>
+
     <div ng-if="registerForm.password.$dirty">
       <span ng-show="registerForm.password.$error.minlength" class="md-whiteframe-z1 message-card warning" layout layout-align="center center"><span>Password too short! Your password should be between 6 and 12 characters long.</span></span>
 
@@ -39,12 +49,6 @@
 
     <div ng-if="registerForm.confirmpassword.$dirty">
       <span ng-show="reg.user.password != reg.user.confirmpassword" class="md-whiteframe-z1 message-card warning" layout layout-align="center center"><span>Password and confirm password should match.</span></span>
-    </div>
-
-    <div ng-if="registerForm.username.$dirty">
-      <span ng-show="registerForm.username.$pending" class="md-whiteframe-z1 message-card info" layout layout-align="center center">Checking Username...</span>
-      
-      <span ng-show="registerForm.username.$invalid" class="md-whiteframe-z1 message-card warning" layout layout-align="center center">Username already taken</span>
     </div>
     
     <div ng-if="registerForm.email.$dirty">

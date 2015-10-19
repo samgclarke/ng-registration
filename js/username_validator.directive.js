@@ -14,7 +14,8 @@ angular.module('myApp')
       	if (!username) {
           return $q.when(true);
         }
-        return $http.get(root_url + '/username-exists/' + username).then(function (response) {
+        return $http.get(api_url + '/username-exists/' + username).then(function (response) {
+          console.log('RESPONSE', response);
           if (response.data) {
             return $q.reject();
           }
